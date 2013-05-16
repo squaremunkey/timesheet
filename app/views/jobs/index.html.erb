@@ -1,27 +1,22 @@
-<h1>Listing jobs</h1>
+<div class="page-header">
+  <h1>Listing jobs</h1>
+</div>
+<div style="float:left;width:100%;clear:both"> <%= link_to 'New Job', new_job_path %></div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Content</th>
-    <th>Timespent</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<div>
 <% @jobs.each do |job| %>
-  <tr>
-    <td><%= job.name %></td>
-    <td><%= job.content %></td>
-    <td><%= job.timespent %></td>
-    <td><%= link_to 'Show', job %></td>
-    <td><%= link_to 'Edit', edit_job_path(job) %></td>
-    <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<div class="job">
+  <div style="float:left;width:60%"> <p><strong><%= job.name %> </strong> |
+    <%= job.content %> | <%= job.timespent %> minutes spent | <%=job.created_at.strftime("%d %b %y")%> 
+    </p>
+  </div>
+        <div style="float:left;width:30%"><p>
+          <%= link_to 'Show', job %> |
+          <%= link_to 'Edit', edit_job_path(job) %> |
+          <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+         
+      </p>
+    </div>
 
-<br />
+ <% end %>
 
-<%= link_to 'New Job', new_job_path %>
